@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b6b55">
+<title>KOLPOCRAFT — Practical Khata</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--green:#08795f;--dark:#083c32;--mint:#eaf8f2;--gold:#f6b94a;--ink:#172a25;--muted:#6a7c76;--line:#e4eee9;--paper:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7faf8;color:var(--ink);font-family:'Hind Siliguri',Inter,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0}
+.top{background:var(--dark);color:#eafff6;text-align:center;padding:8px 12px;font-size:13px}
+header{position:sticky;top:0;z-index:20;background:#ffffffeb;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;padding:13px 20px}
+.logo{font:800 21px Inter,sans-serif;letter-spacing:-.7px;color:var(--green);white-space:nowrap}.logo span{color:var(--ink)}
+.search{flex:1;display:flex;background:#f3f7f5;border:1px solid var(--line);border-radius:14px;padding:8px 12px;gap:8px}.search input{border:0;background:transparent;outline:0;width:100%;font:inherit}
+.navlinks{display:flex;gap:18px;font-weight:600;font-size:14px}.navlinks a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:13px;background:var(--green);color:white;font-weight:700;box-shadow:0 8px 20px #08795f24;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px #08795f30}.btn.light{background:white;color:var(--green);border:1px solid #dcece4;box-shadow:none}
+.wrap{max-width:1180px;margin:auto;padding:0 20px}
+.hero{margin:26px auto 22px;display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center;background:linear-gradient(120deg,#e9f8f0,#f7fbf8 60%,#dff4eb);border:1px solid #dcefe4;border-radius:28px;padding:clamp(24px,5vw,58px);overflow:hidden;position:relative}
+.pill{display:inline-flex;background:#d5f0e3;color:#09644e;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700}
+h1{font-size:clamp(30px,4.6vw,54px);line-height:1.14;letter-spacing:-1px;margin:16px 0}.hero p{font-size:17px;color:#536d62;max-width:520px;line-height:1.75}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-art{min-height:310px;display:grid;place-items:center;perspective:900px;position:relative}
+.orbit{position:absolute;width:300px;height:300px;border:1px dashed #a6d8c0;border-radius:50%;animation:spin 22s linear infinite}
+.book{width:190px;height:250px;border-radius:12px 18px 18px 12px;background:linear-gradient(140deg,#0b8062,#064d40);box-shadow:18px 24px 35px #064d4030;transform:rotateY(-20deg) rotateZ(-7deg);position:relative;display:flex;align-items:center;justify-content:center;color:white;text-align:center;transition:transform .5s;animation:float 5s ease-in-out infinite}
+.book:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:7px;background:#ffffff30;border-radius:8px}.book:after{content:"";position:absolute;right:-9px;top:7px;bottom:7px;width:9px;background:repeating-linear-gradient(#fff,#fff 3px,#d6e7df 4px);border-radius:0 7px 7px 0}
+.book strong{font-size:24px;line-height:1.3}.book small{display:block;font-size:12px;margin-top:12px;color:#c8f1df}
+.sticker{position:absolute;background:white;border:1px solid #e3f0e8;border-radius:14px;padding:12px 16px;box-shadow:0 12px 32px #123c2b12;font-weight:700;animation:float 4s ease-in-out infinite}.sticker.one{top:20px;left:2%}.sticker.two{right:0;bottom:25px;animation-delay:-1.8s}
+@keyframes float{0%,100%{transform:translateY(0) rotateZ(-7deg)}50%{transform:translateY(-12px) rotateZ(-4deg)}}@keyframes spin{to{transform:rotate(360deg)}}
+.section{padding:30px 0 42px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}.section-head h2{font-size:clamp(23px,3vw,32px);margin:0}.section-head p{color:var(--muted);margin:5px 0 0}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.product{background:white;border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 5px 20px #153c2b05;transition:transform .25s,box-shadow .25s;transform-style:preserve-3d}
+.product:hover{transform:translateY(-6px) rotateX(1deg);box-shadow:0 18px 36px #153c2b12}
+.cover{height:185px;border-radius:14px;background:linear-gradient(145deg,#e9f8f0,#ccebdc);display:grid;place-items:center;overflow:hidden;position:relative}
+.cover:after{content:"";position:absolute;width:115px;height:150px;background:linear-gradient(140deg,#0b8062,#064d40);border-radius:6px 12px 12px 6px;box-shadow:10px 13px 20px #164c3526;transform:rotate(-8deg);border-left:6px solid #ffffff45}
+.cover span{z-index:1;color:white;text-align:center;font-weight:700;font-size:17px;line-height:1.25;transform:rotate(-8deg);width:105px}
+.tag{font-size:11px;color:var(--green);background:var(--mint);padding:4px 8px;border-radius:99px;display:inline-block;margin-top:12px;font-weight:700}
+.product h3{font-size:16px;line-height:1.45;margin:9px 0;min-height:46px}.rating{color:#e7a21b;font-size:13px}.price{font:800 20px Inter,sans-serif;color:var(--dark);margin:10px 0}.price small{font-size:12px;color:#91a19a;font-weight:500;text-decoration:line-through;margin-left:5px}
+.product .btn{width:100%;padding:10px;font-size:14px}
+.feature-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.feature{background:white;border:1px solid var(--line);padding:19px;border-radius:17px}.feature b{display:block;margin:8px 0 4px}.feature p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}.emoji{font-size:24px}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.quote{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;line-height:1.75}.quote p{color:#536d62;margin:10px 0}.person{font-weight:700}
+.faq{max-width:850px;margin:auto}.faq details{background:white;border:1px solid var(--line);border-radius:14px;margin:10px 0;padding:16px 18px}.faq summary{font-weight:700;cursor:pointer}.faq p{color:var(--muted);line-height:1.7}
+footer{background:#092f28;color:#e8fff5;padding:42px 0 20px;margin-top:30px}.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}.footgrid p,.footgrid a{color:#b8d4c9;font-size:14px;line-height:1.8}.footgrid h3{margin:0 0 12px}.copyright{border-top:1px solid #ffffff20;margin-top:25px;padding-top:16px;color:#a9c7ba;font-size:13px}
+.mobilebar{display:none}
+@media(max-width:900px){.navlinks{display:none}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr .8fr}.feature-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.top{font-size:11px}.nav{padding:11px 14px;gap:10px}.logo{font-size:18px}.search{padding:7px 9px}.nav .btn{display:none}.wrap{padding:0 14px}.hero{grid-template-columns:1fr;padding:25px 21px;margin-top:15px;border-radius:22px}.hero p{font-size:15px}.hero-art{min-height:250px}.book{width:150px;height:205px}.book strong{font-size:20px}.orbit{width:240px;height:240px}.sticker{font-size:12px;padding:9px 12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px;border-radius:16px}.cover{height:145px}.cover:after{height:115px;width:88px}.cover span{font-size:14px;width:80px}.product h3{font-size:14px;min-height:60px}.price{font-size:17px}.section{padding:23px 0 32px}.section-head{align-items:start;flex-direction:column}.feature-row{gap:9px}.feature{padding:14px}.testimonials{grid-template-columns:1fr}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}.mobilebar{display:flex;position:fixed;bottom:10px;left:10px;right:10px;z-index:30;background:#073e32;color:white;border-radius:18px;padding:9px;justify-content:space-around;box-shadow:0 10px 30px #0003}.mobilebar a{text-align:center;font-size:11px;display:grid;gap:2px}.mobilebar b{font-size:17px}body{padding-bottom:78px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="top">SSC & HSC Practical Khata · নতুন সিলেবাস অনুযায়ী প্রস্তুত</div>
+<header><div class="nav">
+<a class="logo" href="#"><span>STUDY</span>CRAFT</a>
+<div class="search">⌕ <input id="search" placeholder="প্রোডাক্ট খুঁজুন..." aria-label="Search products"></div>
+<nav class="navlinks"><a href="#products">খাতা</a><a href="#why">কেন আমরা</a><a href="#faq">FAQ</a></nav>
+<a class="btn" href="#products">খাতা বেছে নিন</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div><span class="pill">SSC ২০২৬-২৭ ও HSC ২০২৬</span>
+<h1>প্র্যাকটিক্যাল খাতা লেখার <span style="color:var(--green)">ঝামেলা শেষ!</span></h1>
+<p>হাতে লেখা নির্ভুল খাতা পৌঁছে যাবে আপনার ঠিকানায়। চিত্র আঁকা আর গ্রাফ মেলানোর পেছনে সময় নষ্ট না করে পরীক্ষার প্রস্তুতিতে মন দিন।</p>
+<div class="hero-actions"><a class="btn" href="#products">আপনার বিষয়ের খাতা বেছে নিন →</a><a class="btn light" href="#why">আরও জানুন</a></div>
+<p style="font-size:13px;margin-top:16px">✓ ১০০% হাতে লেখা &nbsp; ✓ সারাদেশে হোম ডেলিভারি</p></div>
+<div class="hero-art"><div class="orbit"></div><div class="sticker one">✍️ হাতে লেখা</div><div class="book"><strong>SSC & HSC<br>প্র্যাকটিক্যাল<br>খাতা<small>বোর্ড সিলেবাস অনুযায়ী</small></strong></div><div class="sticker two">📦 হোম ডেলিভারি</div></div>
+</section>
+<section class="section" id="products"><div class="section-head"><div><h2>সকল প্র্যাকটিক্যাল খাতা</h2><p>বোর্ড সিলেবাস অনুযায়ী প্রস্তুতকৃত রেডিমেড ব্যবহারিক খাতা</p></div><span class="pill">মোট ১৪টি খাতা</span></div>
+<div class="grid" id="productGrid"></div></section>
+<section class="section" id="why"><div class="section-head"><div><h2>কেন KOLPOCRAFT?</h2><p>প্র্যাকটিক্যাল প্রস্তুতিকে সহজ করতে আমাদের প্রতিশ্রুতি</p></div></div>
+<div class="feature-row"><div class="feature"><span class="emoji">📘</span><b>বোর্ড সিলেবাস</b><p>নির্ধারিত সিলেবাস ও নির্দেশনা অনুসারে সাজানো।</p></div><div class="feature"><span class="emoji">✍️</span><b>পরিষ্কার হস্তাক্ষর</b><p>হাতে লেখা ও প্রয়োজনীয় বৈজ্ঞানিক চিত্র।</p></div><div class="feature"><span class="emoji">📦</span><b>নিরাপদ প্যাকেজিং</b><p>খাতা যত্নসহকারে প্যাক করে পাঠানো হয়।</p></div><div class="feature"><span class="emoji">↻</span><b>সাপোর্ট</b><p>অর্ডার সংক্রান্ত প্রয়োজনে সহায়তা।</p></div></div></section>
+<section class="section"><div class="section-head"><div><h2>শিক্ষার্থীদের অভিজ্ঞতা</h2><p>প্র্যাকটিক্যাল প্রস্তুতি নিয়ে মতামত</p></div></div>
+<div class="testimonials"><article class="quote"><div class="rating">★★★★★</div><p>“খাতার লেখা সুন্দর ছিল এবং চিত্রগুলো পরিষ্কারভাবে সাজানো।”</p><div class="person">সাকিবুল হাসান</div><small>HSC শিক্ষার্থী</small></article><article class="quote"><div class="rating">★★★★★</div><p>“সময় বাঁচাতে সাহায্য করেছে। প্যাকেজিংও ভালো ছিল।”</p><div class="person">তানজিলা আহমেদ</div><small>SSC শিক্ষার্থী</small></article><article class="quote"><div class="rating">★★★★★</div><p>“প্র্যাকটিক্যালের প্রস্তুতি গুছিয়ে নিতে সুবিধা হয়েছে।”</p><div class="person">একজন অভিভাবক</div><small>ঢাকা</small></article></div></section>
+<section class="section" id="faq"><div class="section-head" style="justify-content:center;text-align:center"><div><h2>সাধারণ জিজ্ঞাসা</h2><p>প্র্যাকটিক্যাল খাতা সম্পর্কে কিছু প্রশ্ন</p></div></div>
+<div class="faq"><details><summary>খাতাগুলো কি হাতে লেখা?</summary><p>এই ডেমো ডিজাইনে পণ্যের বিবরণ দেখানো হয়েছে। অর্ডারের আগে সংশ্লিষ্ট খাতার তথ্য যাচাই করুন।</p></details><details><summary>ডেলিভারি পেতে কতদিন লাগবে?</summary><p>ডেলিভারির সময় এলাকা ও কুরিয়ার সেবার ওপর নির্ভর করে।</p></details><details><summary>আমার কলেজের সিলেবাস আলাদা হলে কী করব?</summary><p>অর্ডার করার আগে বিক্রেতার সঙ্গে সিলেবাস মিলিয়ে নিন।</p></details></div></section>
+</main>
+<footer><div class="wrap"><div class="footgrid"><div><h3>KOLPOCRAFT</h3><p>SSC ও HSC শিক্ষার্থীদের প্র্যাকটিক্যাল প্রস্তুতির জন্য একটি নমুনা storefront।</p></div><div><h3>প্রয়োজনীয় লিংক</h3><a href="#products">সকল খাতা</a><br><a href="#why">আমাদের সম্পর্কে</a><br><a href="#faq">FAQ</a></div><div><h3>যোগাযোগ</h3><p>ঢাকা, বাংলাদেশ<br>Support information</p></div></div><div class="copyright">© 2026 KOLPOCRAFT · Frontend demo — no checkout or payment</div></div></footer>
+<nav class="mobilebar"><a href="#"><b>⌂</b>হোম</a><a href="#products"><b>▦</b>খাতা</a><a href="#why"><b>♡</b>আমাদের</a><a href="#faq"><b>☰</b>FAQ</a></nav>
+<script>
+const products=[
+["SSC ALL SCIENCE SUBJECT HAND WRITTEN + DRAWING PRACTICAL KHATA","৳1,500","SSC"],
+["SSC Physics Readymade Practical Khata (Hand-written & Drawing)","৳200","SSC"],
+["SSC Chemistry Readymade Practical Khata (Hand-written)","৳200","SSC"],
+["SSC Biology Readymade Practical Khata (Drawing & Writing)","৳200","SSC"],
+["SSC Higher Math Readymade Practical Khata (Hand-written)","৳200","SSC"],
+["SSC Krishi Shikkha Readymade Practical Khata","৳250","SSC"],
+["SSC ICT Readymade Practical Khata","৳200","SSC"],
+["HSC Physics 1st Paper Readymade Practical Khata","৳600","HSC"],
+["HSC Physics 2nd Paper Readymade Practical Khata","৳600","HSC"],
+["HSC Chemistry 2nd Paper Readymade Practical Khata","৳600","HSC"],
+["HSC Chemistry 1st Paper Readymade Practical Khata","৳200","HSC"],
+["HSC Biology 1st Paper Readymade Practical Khata","৳650","HSC"],
+["HSC Biology 2nd Paper Readymade Practical Khata","৳650","HSC"],
+["HSC Higher Math 1st Paper Readymade Practical Khata","৳550","HSC"]];
+const grid=document.getElementById('productGrid');
+function render(list){grid.innerHTML=list.map((p,i)=>`<article class="product"><div class="cover"><span>${p[2]}<br>Practical<br>Khata</span></div><span class="tag">হাতে লেখা · ${p[2]}</span><h3>${p[0]}</h3><div class="rating">★★★★★ <span style="color:#82938c">(রিভিউ)</span></div><div class="price">${p[1]}</div><a class="btn" href="product/ssc-chemistry/index.html">বিস্তারিত দেখুন</a></article>`).join('')}
+render(products);
+document.getElementById('search').addEventListener('input',e=>render(products.filter(p=>p[0].toLowerCase().includes(e.target.value.toLowerCase()))));
+</script>
+</body></html>
